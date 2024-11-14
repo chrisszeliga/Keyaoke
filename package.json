@@ -1,0 +1,20 @@
+{
+  "name": "keyaoke",
+  "module": "backend/src/index.ts",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "scripts": {
+    "start": "bun backend/src/index.ts",
+    "dev": "bun --watch backend/src/index.ts"
+  },
+  "type": "module",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "hono": "^4.6.9",
+    "react-spotify-web-playback": "^0.14.5"
+  }
+}
