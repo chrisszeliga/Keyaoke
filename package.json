@@ -2,6 +2,7 @@
   "name": "keyaoke",
   "module": "backend/src/index.ts",
   "devDependencies": {
+    "@flydotio/dockerfile": "^0.5.9",
     "@types/bun": "latest"
   },
   "peerDependencies": {
