@@ -39,10 +39,7 @@ export const initiateOAuth = () => {
 //
 // 
 //
-export const isPremium = async (c: Context) => {
-  // Get access token
-  const accessToken = getCookie(c, 'access_token')
-
+export const isPremium = async (accessToken: string) => {
   // API call to 
   const response = await fetch('https://api.spotify.com/v1/me', {
     headers: {
@@ -50,8 +47,9 @@ export const isPremium = async (c: Context) => {
     }
   })
   const data = await response.json()
+  const plan = await data.product
 
-  return data.product
+  return plan === 'premium'
 }
 
 
@@ -108,6 +106,8 @@ export const getAndSetTokens = async (c: Context, code: string) => {
     path: '/',
     sameSite: 'Strict',
   })
+
+  return data.access_token
 }
 
 

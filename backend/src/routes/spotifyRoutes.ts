@@ -1,6 +1,6 @@
 import { Hono } from 'hono'
 import { getCookie, setCookie } from 'hono/cookie'
-import { initiateOAuth, isPremium, getAndSetTokens, refreshAccessToken } from '../controllers/oauthController'
+import { initiateOAuth, getAndSetTokens, refreshAccessToken, isPremium } from '../controllers/oauthController'
 
 
 export const spotifyRoutes = new Hono
@@ -27,11 +27,6 @@ spotifyRoutes.get('/login', (c) => {
 // access and refresh token, then redirects to the play page.
 //
 spotifyRoutes.get('/callback', async (c) => {
-  // Check if user has premium
-  const premium = await isPremium(c)
-  if (premium !== 'premium')
-    return c.redirect('/upgrade')
-
   // Get the authorization code from the URL
   const code = c.req.query('code')
 
@@ -42,7 +37,12 @@ spotifyRoutes.get('/callback', async (c) => {
 
   try {
     // Get and set access and refresh token cookies 
-    await getAndSetTokens(c, code)
+    const accessToken = await getAndSetTokens(c, code)
+
+    // Check if user has premium
+    const isPremiumResult = await isPremium(accessToken)
+    if (!isPremiumResult)
+      return c.redirect('/upgrade')
 
     // Redirect to the /search page
     return c.redirect('/search')
