@@ -6,6 +6,7 @@ type Track = {
   album: string
   albumImg: string
   uri: string
+  duration: number
 }
 
 type TrackListItemProps = {
@@ -17,11 +18,11 @@ export default function TrackListItem({ track }: TrackListItemProps) {
   const navigate = useNavigate()
 
   const goToPlay = () => {
-    navigate('/play', { state: track });
+    navigate('/play', { state: track })
   }
 
   return (
-  <li onClick={goToPlay} className="flex items-center p-2 cursor-pointer hover:bg-gray-200 rounded-lg">
+  <li onClick={goToPlay} className="flex items-center p-2 cursor-pointer hover:bg-gray-800 rounded-lg">
     <img
       src={track.albumImg}
       alt={track.name}
@@ -29,7 +30,7 @@ export default function TrackListItem({ track }: TrackListItemProps) {
     />
     <div className="flex flex-col">
       <span className="font-bold">{track.name}</span>
-      <span className="text-sm text-gray-500">{track.artist}</span>
+      <span className="text-sm text-gray-400">{track.artist}</span>
     </div>
   </li>
   )

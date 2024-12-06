@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from 'react'
 
 type Track = {
   name: string
@@ -6,13 +6,14 @@ type Track = {
   album: string
   albumImg: string
   uri: string
-};
+  duration: number
+}
 
 type SearchBarProps = {
   searchQuery: string
   setSearchQuery: React.Dispatch<React.SetStateAction<string>>
   setTracks: React.Dispatch<React.SetStateAction<Track[]>>
-};
+}
 
 export default function SearchBar({ searchQuery, setSearchQuery, setTracks }: SearchBarProps) {
   // State for keeping track of the Timeout ID.
@@ -51,7 +52,7 @@ export default function SearchBar({ searchQuery, setSearchQuery, setTracks }: Se
       type="text"
       value={searchQuery}
       onChange={handleSearch}
-      className="bg-gray-200 p-2 rounded-lg w-80 focus:outline-none"
+      className="bg-gray-700 text-gray-200 p-6 rounded-3xl w-1/4 h-16 focus:outline-none text-xl"
       placeholder="Search for a song"
     /> 
   )

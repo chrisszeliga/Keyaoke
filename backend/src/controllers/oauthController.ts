@@ -6,9 +6,9 @@ const clientId = Bun.env.SPOTIFY_CLIENT_ID
 const clientSecret = Bun.env.SPOTIFY_CLIENT_SECRET
 const redirectUri = Bun.env.SPOTIFY_REDIRECT_URI
 
-const scope = 'user-read-private app-remote-control user-library-read' // Scopes needed
+const scope = 'streaming user-read-email user-read-private user-read-playback-state user-modify-playback-state' // Scopes needed
 const responseType = 'code' // Authorization code flow
-const state = 'random_string_or_session_id' // For CSRF protection
+const state = '' // For CSRF protection
 
 //
 // initiateOAuth
@@ -19,7 +19,7 @@ const state = 'random_string_or_session_id' // For CSRF protection
 export const initiateOAuth = () => {
   // Check if values from .env
   if (!clientId || !clientSecret || !redirectUri) {
-    throw new Error('Spotify client ID, client secret, or redirect URI is missing.');
+    throw new Error('Spotify client ID, client secret, or redirect URI is missing.')
   }
 
   // Construct Spotify authorization URL
@@ -28,9 +28,9 @@ export const initiateOAuth = () => {
                   `response_type=${responseType}&` +
                   `redirect_uri=${encodeURIComponent(redirectUri)}&` +
                   `scope=${encodeURIComponent(scope)}&` +
-                  `state=${encodeURIComponent(state)}`;
+                  `state=${encodeURIComponent(state)}`
 
-  return authUrl;
+  return authUrl
 }
 
 
@@ -133,14 +133,14 @@ export const refreshAccessToken = async (c: Context) => {
     // Get and check refreshToken
     const refreshToken = getCookie(c, 'refresh_token')
     if (!refreshToken) {
-      return null;
+      return null
     }
 
     // Create body for post request
     const body = new URLSearchParams({
       grant_type: 'refresh_token',
       refresh_token: refreshToken,
-    });
+    })
 
     // Post request to get access token with refresh token
     const response = await fetch('https://accounts.spotify.com/api/token', {
@@ -150,29 +150,29 @@ export const refreshAccessToken = async (c: Context) => {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
       body,
-    });
+    })
 
     if (!response.ok) {
-      const errorData = await response.json();
-      console.error('Failed to refresh access token:', errorData);
-      return null;
+      const errorData = await response.json()
+      console.error('Failed to refresh access token:', errorData)
+      return null
     }
 
-    const data = await response.json();
+    const data = await response.json()
 
     // Set Cookie Access token
     setCookie(c, 'access_token', data.access_token, {
       httpOnly: true,
-      secure: false,
+      secure: true,
       maxAge: 3600, // 1 hour
       path: '/',
       sameSite: 'Strict',
-    });
+    })
 
     // Return the new access token
-    return { accessToken: data.access_token };
+    return { accessToken: data.access_token }
   } catch (error) {
-    console.error('Error refreshing access token:', error);
-    return null;
+    console.error('Error refreshing access token:', error)
+    return null
   }
-};
+}

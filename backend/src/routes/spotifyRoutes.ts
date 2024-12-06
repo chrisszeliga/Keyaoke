@@ -94,7 +94,8 @@ spotifyRoutes.get('/search', async (c) => {
         artist: track.artists[0].name,
         album: track.album.name,
         albumImg: track.album.images[0].url,
-        uri: track.uri
+        uri: track.uri,
+        duration: track.duration_ms
       }))
       
       return c.json(tracks)
@@ -103,7 +104,7 @@ spotifyRoutes.get('/search', async (c) => {
     }
   } catch (error) {
     console.error('Error querying Spotify API:', error)
-    return c.text('Error querying Spotify', 500)
+    return c.text('Error querying Spotify API', 500)
   }
 })
 
@@ -130,3 +131,4 @@ spotifyRoutes.get('/access-token', async (c) => {
   }
   return c.json(accessToken)
 })
+
