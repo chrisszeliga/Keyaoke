@@ -52,9 +52,8 @@ export default function SearchBar({ searchQuery, setSearchQuery, setTracks }: Se
       type="text"
       value={searchQuery}
       onChange={handleSearch}
-      className="bg-gray-700 text-gray-200 p-6 rounded-3xl w-1/4 h-16 focus:outline-none text-xl"
+      className="bg-gray-700 text-gray-200 p-6 rounded-3xl w-5/6 sm:w-2/3 md:w-3/5 lg:w-1/3 h-12 sm:h-16 focus:outline-none text-xl"
       placeholder="Search for a song"
     /> 
   )
 }
-      

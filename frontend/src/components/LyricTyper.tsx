@@ -163,11 +163,12 @@ export default function LyricTyper ({ track }: LyricTyperProps) {
 
   return (
     <>
-      <div className="w-full max-w-2xl mx-auto space-y-6 mt-6">
+      <div className="w-full max-w-2xl mx-auto mt-6">
         {/* Lyrics Display */}
         <div 
           ref={lyricsContainerRef}
-          className="bg-gray-900 p-6 rounded-lg font-mono whitespace-pre-line h-[650px] overflow-y-auto scrollbar-hide"
+          className="bg-gray-900 p-6 rounded-lg font-mono whitespace-pre-line overflow-y-auto scrollbar-hide"
+          style={{ maxHeight: 'calc(100vh - 260px)' }}
         >
           {lyrics.length === 0 ? (
             <div className="text-gray-500 text-center">
@@ -193,7 +194,7 @@ export default function LyricTyper ({ track }: LyricTyperProps) {
         </div>       
 
         {/* Typing Input */}
-        <div className="relative">
+        <div className="fixed bottom-40 left-1/2 transform -translate-x-1/2 w-4/5 sm:w-4/5 md:w-2/3 lg:w-1/3">
           <input
             type="text"
             value={typedText}

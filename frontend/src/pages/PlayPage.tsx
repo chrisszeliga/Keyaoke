@@ -37,7 +37,7 @@ export default function PlayPage() {
   return (
     <>
       <LyricTyper track={track}/>
-      <div className="border-4 border-gray-800 rounded-2xl mb-8 w-[650px] h-[88px] fixed bottom-0 left-1/2 transform -translate-x-1/2 flex justify-center items-center">
+      <div className="border-4 border-gray-800 rounded-2xl mb-8 w-4/5 sm:w-4/5 md:w-2/3 lg:w-1/3 h-[88px] fixed bottom-0 left-1/2 transform -translate-x-1/2 flex justify-center items-center">
         <SpotifyPlayer
           token={accessToken}
           uris={track.uri ? [track.uri] : []}
@@ -60,3 +60,6 @@ export default function PlayPage() {
     </>
   )
 }
+/*
+
+*/
