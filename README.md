@@ -2,7 +2,7 @@
 
 Type along with your favorite songs — Keyaoke turns music into a typing game.
 
-[Deployed App](https://keyaoke.fly.dev/)
+https://keyaoke.fly.dev/
 
 ## 🕹️ What is Keyaoke?
 
