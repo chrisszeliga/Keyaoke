@@ -9,10 +9,14 @@ Type along with your favorite songs — Keyaoke turns music into a typing game.
 ## 🎬 Demo
 
 **Login & Song Search**
-![Login Demo](public/login-search-demo.gif)
+
+![login-search-demo](https://github.com/user-attachments/assets/fccd7803-8c02-427d-a29d-1f0cb74e75a8)
 
 **Typing Gameplay**
-![Typing Demo](public/typing-demo.gif)
+
+https://github.com/user-attachments/assets/d1f2e68c-661f-4e7d-91c8-d189f25c833c
+
+
 
 ## ⚠️ Disclaimer
 
