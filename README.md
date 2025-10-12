@@ -1,5 +1,14 @@
 # 🎵 Keyaoke
 
+![Bun](https://img.shields.io/badge/Bun-000000?logo=bun&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
+![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=black)
+![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?logo=tailwindcss&logoColor=white)
+![Hono](https://img.shields.io/badge/Hono-FF6B00?logo=hono&logoColor=white)
+![Spotify API](https://img.shields.io/badge/Spotify_API-1DB954?logo=spotify&logoColor=white)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow)
+
 Type along with your favorite songs — Keyaoke turns music into a typing game.
 
 https://keyaoke.fly.dev/
